@@ -3,6 +3,8 @@ import store from '@/../store';
 import keyboard from './keyboard';
 import isSynth from './is-synth';
 
+window.WebMidi = WebMidi;
+
 class Application {
   constructor() {
     WebMidi.enable((err) => {

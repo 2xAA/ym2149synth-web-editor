@@ -19,7 +19,6 @@
       :value='range.value'
       :cc='range.cc'
     ></range-control>
-    <a href='#' id='save' download='voice.json' @click='exportJson' ref='downloadLink'>Save voice data to file</a>
   </div>
 </template>
 
@@ -62,13 +61,6 @@
       ]),
       updateChannel(e) {
         this.$data.channel = e.channel;
-      },
-      exportJson() {
-        // e.preventDefault();
-        console.log(this);
-        this.$refs.downloadLink.href = `data:text/json,${JSON.stringify(this.getVoice(this.channel))}`;
-        // this.$refs.downloadLink.click();
-        // return false;
       },
     },
     watch: {

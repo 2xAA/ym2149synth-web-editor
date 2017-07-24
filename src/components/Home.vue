@@ -2,6 +2,10 @@
   <div>
     <h1>YM2149Synth Patch Editor</h1>
     <h2>Connected: {{ connected }} <span v-if='name'>({{ name }})</span></h2>
+    <load-patch></load-patch>
+    <save-patch></save-patch>
+    <save-to-file></save-to-file>
+    <hr>
     <editor-panel></editor-panel>
   </div>
 </template>
@@ -10,6 +14,9 @@
   import { mapGetters } from 'vuex';
   import WebMidi from 'webmidi';
 
+  import LoadPatch from './LoadPatch';
+  import SavePatch from './SavePatch';
+  import SaveToFile from './SaveToFile';
   import EditorPanel from './EditorPanel';
 
   export default {
@@ -28,6 +35,9 @@
       },
     },
     components: {
+      LoadPatch,
+      SavePatch,
+      SaveToFile,
       EditorPanel,
     },
   };
