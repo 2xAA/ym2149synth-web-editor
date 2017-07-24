@@ -10,7 +10,7 @@
       min='0'
       max='127'
       step='1'
-      v-model='inputValue'
+      v-model.number='inputValue'
     >
     <input
       :disabled='!connected'
@@ -18,7 +18,7 @@
       min='0'
       max='127'
       step='1'
-      v-model='inputValue'
+      v-model.number='inputValue'
     >
   </div>
 </template>
@@ -33,6 +33,7 @@
       'title',
       'value',
       'cc',
+      'channel',
     ],
     data() {
       return {
@@ -56,6 +57,7 @@
       inputValue() {
         console.log(this.inputValue);
         this.writeValue({
+          channel: this.channel,
           id: this.cc,
           value: this.inputValue,
         });

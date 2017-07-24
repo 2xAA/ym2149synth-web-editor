@@ -1,5 +1,6 @@
 import WebMidi from 'webmidi';
 import store from '@/../store';
+import keyboard from './keyboard';
 import isSynth from './is-synth';
 
 class Application {
@@ -31,6 +32,8 @@ class Application {
         store.dispatch('status/registerDeviceId', { id: output.id });
       }
     });
+
+    keyboard();
   }
 }
 
