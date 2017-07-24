@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapGetters, mapMutations } from 'vuex';
 
   export default {
     name: 'channel-selector',
@@ -24,11 +24,14 @@
         'connected',
       ]),
     },
+    methods: {
+      ...mapMutations('values', [
+        'setChannel',
+      ]),
+    },
     watch: {
       inputValue() {
-        this.$emit('channelChange', {
-          channel: this.inputValue,
-        });
+        this.setChannel({ channel: this.inputValue });
       },
     },
   };

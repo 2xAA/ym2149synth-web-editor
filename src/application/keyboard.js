@@ -37,7 +37,7 @@ const keyBindings = {
 
 const noteOn = {};
 
-const octave = 2;
+let octave = 2;
 
 export default function createKeyboard() {
   window.addEventListener('keydown', (e) => {
@@ -57,6 +57,10 @@ export default function createKeyboard() {
 
       noteOn[note] = true;
       currentOutput.playNote(note, 1);
+    } else if(e.key === '=' || e.key === '+') {
+      if(octave < 6) octave += 1;
+    } else if(e.key === '-' || e.key === '_') {
+      if(octave > 0) octave -= 1;
     }
   });
 

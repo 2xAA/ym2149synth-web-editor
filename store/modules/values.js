@@ -2,24 +2,29 @@ import store from '@/../store';
 import Vue from 'vue';
 import WebMidi from 'webmidi';
 
-const state = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64]
-];
+const state = {
+  values: [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64],
+  ],
+  channel: 1,
+};
 
 const timers = [];
 
 // getters
 const getters = {
-  value: state => (channel, id) => state[channel][id],
-  voice: state => (channel) => state[channel],
-  values: state => state
+  value: state => (channel, id) => state.values[channel][id],
+  voice: state => (channel) => state.values[channel],
+  values: state => state.values,
+  channel: state => state.channel,
 };
 
 // actions
 const actions = {
-  writeValue({ commit, state }, { channel, id, value }) {
+  writeValue({ commit, state }, { id, value }) {
+    const channel = state.channel;
     let currentOutput;
     WebMidi.outputs.forEach((output) => {
       if(output.id === store.getters['status/id']) currentOutput = output;
@@ -48,7 +53,10 @@ const actions = {
 // mutations
 const mutations = {
   setValue(state, { channel, id, value }) {
-    Vue.set(state[channel], id, value);
+    Vue.set(state.values[channel], id, value);
+  },
+  setChannel(state, { channel }) {
+    Vue.set(state, 'channel', channel);
   }
 };
 

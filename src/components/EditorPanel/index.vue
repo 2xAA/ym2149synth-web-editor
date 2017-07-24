@@ -1,6 +1,6 @@
 <template>
   <div>
-    <channel-selector @channelChange='updateChannel'></channel-selector>
+    <channel-selector></channel-selector>
     <h3>Synth Type</h3>
     <select :disabled='!connected' v-model='voice'>
       <option value='0'>Square-voice</option>
@@ -18,7 +18,6 @@
       :label='range.label'
       :value='range.value'
       :cc='range.cc'
-      :channel='channel'
     ></range-control>
     <a href='#' id='save' download='voice.json' @click='exportJson' ref='downloadLink'>Save voice data to file</a>
   </div>
@@ -33,7 +32,6 @@
     name: 'editor-panel',
     data() {
       return {
-        channel: 1,
         voice: 0,
         ranges: [
           { title: 'Fine-tune', label: 'Softwave-voice / Env-voice (Software PWM)', value: 0, cc: 1 },
@@ -55,6 +53,7 @@
       ]),
       ...mapGetters('values', {
         getVoice: 'voice',
+        channel: 'channel',
       }),
     },
     methods: {

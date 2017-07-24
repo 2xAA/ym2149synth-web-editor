@@ -33,7 +33,6 @@
       'title',
       'value',
       'cc',
-      'channel',
     ],
     data() {
       return {
@@ -57,7 +56,6 @@
       inputValue() {
         console.log(this.inputValue);
         this.writeValue({
-          channel: this.channel,
           id: this.cc,
           value: this.inputValue,
         });
