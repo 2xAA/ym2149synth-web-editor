@@ -53,17 +53,25 @@ const actions = {
 
     function ccHandle(e) {
       capture.push(e.data[2]);
-      if(capture.length === 11) { // @TODO There's 16 bytes in a patch, but we only use 11? Idk, ask trash80.
-        currentInput.removeListener('controlchange', channel, ccHandle);
+
+      // The YM2149 Synth patches are only 11 bytes, the rest is padding to meet MIDI spec
+      if(capture.length === 11) {
+        currentInput.removeListener('controlchange', state.channel, ccHandle);
 
         capture.forEach((data, idx) => commit('setValue', { channel: channel - 1, id: idx, value: data }))
       }
     }
+
     currentInput.on('controlchange', channel, ccHandle);
+
     // Load patch on device
     currentOutput.sendChannelMode(120, id - 1, channel);
-    // Ask device to send patch
-    currentOutput.sendChannelMode(122, id - 1, channel);
+
+    // Ask device to send patch after delay
+    // @TODO Is this really necessary?
+    setTimeout(() => {
+      currentOutput.sendChannelMode(122, id - 1, channel);
+    }, 80);
   },
   savePatchToDevice({ commit, state }, { id }) {
     const currentOutput = WebMidi.outputs.find((output) => output.id === store.getters['status/id']);

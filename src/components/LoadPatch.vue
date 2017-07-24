@@ -4,7 +4,7 @@
       <h3>Load Patch from Synth EEPROM</h3>
     </label>
     <select :disabled='!connected' v-model.number='inputValue'>
-      <option v-for='i in 16' :value='i'>Patch {{ i }}</option>
+      <option v-for='i in 11' :value='i'>Patch {{ i }}</option>
     </select>
     <button :disabled='!connected' @click='loadPatch'>Load patch</button>
   </div>
