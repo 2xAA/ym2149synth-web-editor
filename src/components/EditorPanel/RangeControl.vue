@@ -1,25 +1,31 @@
 <template>
-  <div>
-    <label>
-      <h3>{{ title }}</h3>
-      <span v-if='label'>{{ label }}</span>
-    </label>
-    <input
-      :disabled='!connected'
-      type='range'
-      min='0'
-      max='127'
-      step='1'
-      v-model.number='inputValue'
-    >
-    <input
-      :disabled='!connected'
-      type='number'
-      min='0'
-      max='127'
-      step='1'
-      v-model.number='inputValue'
-    >
+  <div class='pure-u-1-1 pure-u-sm-1-2 pure-u-md-1-3 control-container'>
+    <div class='shadow'>
+        <h3>{{ title }}</h3>
+  <!--     <input
+        :disabled='!connected'
+        type='range'
+        min='0'
+        max='127'
+        step='1'
+        v-model.number='inputValue'
+      > -->
+      <circle-slider
+        v-model.number='inputValue'
+        :min='0'
+        :max='127'
+        :step-size='1'
+      ></circle-slider>
+      <input
+        :disabled='!connected'
+        type='number'
+        min='0'
+        max='127'
+        step='1'
+        v-model.number='inputValue'
+      >
+      <p v-if='label'>{{ label }}</p>
+    </div>
   </div>
 </template>
 
@@ -67,7 +73,4 @@
 </script>
 
 <style scoped lang='scss'>
-  label {
-    display: block;
-  }
 </style>

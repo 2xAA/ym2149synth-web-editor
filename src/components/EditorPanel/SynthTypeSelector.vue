@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <h3>Synth Type</h3>
-    <select :disabled='!connected' v-model.number='voice'>
-      <option v-for='(option, idx) in options' :value='idx'>{{ option }}</option>
-    </select>
+  <div class='control-container pure-u-1-1'>
+    <div class='shadow pure-form'>
+      <h3>Synth Type</h3>
+      <select :disabled='!connected' v-model.number='voice'>
+        <option v-for='(option, idx) in options' :value='idx'>{{ option }}</option>
+      </select>
+    </div>
   </div>
 </template>
 
