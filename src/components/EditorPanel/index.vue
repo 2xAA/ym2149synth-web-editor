@@ -1,14 +1,16 @@
 <template>
   <div>
     <h2>Patch values:</h2>
-    <synth-type-selector></synth-type-selector>
-    <range-control
-      v-for='range in ranges'
-      :title='range.title'
-      :label='range.label'
-      :value='range.value'
-      :cc='range.cc'
-    ></range-control>
+    <div class='pure-g'>
+      <synth-type-selector></synth-type-selector>
+      <range-control
+        v-for='range in ranges'
+        :title='range.title'
+        :label='range.label'
+        :value='range.value'
+        :cc='range.cc'
+      ></range-control>
+    </div>
   </div>
 </template>
 

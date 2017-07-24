@@ -1,11 +1,14 @@
 <template>
   <a
-    :disabled='!connected'
     href='#'
     download='voice.json'
     @click='exportJson'
     ref='downloadLink'
-  >Save voice data to file</a>
+    class='pure-button'
+    :class="{ 'pure-button-disabled': !connected }"
+  >
+    <i class="fa fa-file-text" aria-hidden="true"></i> Save voice data to file
+  </a>
 </template>
 
 <script>
