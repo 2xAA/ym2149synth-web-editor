@@ -37,10 +37,10 @@ const keyBindings = {
 
 const noteOn = {};
 
-let octave = 2;
-
 export default function createKeyboard() {
   window.addEventListener('keydown', (e) => {
+    const octave = store.getters['values/keyboardOctave'];
+    const channel = store.getters['values/channel'];
     let currentOutput;
 
     WebMidi.outputs.forEach((output) => {
@@ -56,15 +56,17 @@ export default function createKeyboard() {
       if(noteOn[note]) return;
 
       noteOn[note] = true;
-      currentOutput.playNote(note, 1);
+      currentOutput.playNote(note, channel);
     } else if(e.key === '=' || e.key === '+') {
-      if(octave < 6) octave += 1;
+      store.dispatch('values/incrementOctave');
     } else if(e.key === '-' || e.key === '_') {
-      if(octave > 0) octave -= 1;
+      store.dispatch('values/decrementOctave');
     }
   });
 
   window.addEventListener('keyup', (e) => {
+    const octave = store.getters['values/keyboardOctave'];
+    const channel = store.getters['values/channel'];
     let currentOutput;
 
     WebMidi.outputs.forEach((output) => {
@@ -76,7 +78,7 @@ export default function createKeyboard() {
       const binding = keyBindings[e.key];
       const note = binding.note + (octave + binding.octave);
       noteOn[note] = false;
-      currentOutput.stopNote(note, 1);
+      currentOutput.stopNote(note, channel);
     }
   });
 }

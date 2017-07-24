@@ -34,15 +34,26 @@
       'value',
       'cc',
     ],
-    data() {
-      return {
-        inputValue: 0,
-      };
-    },
     computed: {
       ...mapGetters('status', [
         'connected',
       ]),
+      ...mapGetters('values', {
+        channel: 'channel',
+        getValue: 'value',
+      }),
+      inputValue: {
+        get() {
+          return this.$store.state.values.values[this.channel - 1][this.cc - 1];
+          // return this.getValue(this.channel - 1, this.cc - 1);
+        },
+        set(value) {
+          this.writeValue({
+            id: this.cc,
+            value,
+          });
+        },
+      },
     },
     methods: {
       ...mapActions('values', [
@@ -50,16 +61,7 @@
       ]),
     },
     beforeMount() {
-      this.$data.inputValue = this.value;
-    },
-    watch: {
-      inputValue() {
-        console.log(this.inputValue);
-        this.writeValue({
-          id: this.cc,
-          value: this.inputValue,
-        });
-      },
+      this.inputValue = this.value;
     },
   };
 </script>

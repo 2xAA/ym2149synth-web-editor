@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Select voice</h3>
+    <h3>Select channel/voice</h3>
     <select :disabled='!connected' v-model='inputValue'>
       <option value='1'>A</option>
       <option value='2'>B</option>
