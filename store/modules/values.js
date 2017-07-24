@@ -10,6 +10,7 @@ const state = {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64],
   ],
   channel: 1,
+  keyboardOctave: 2,
 };
 
 const timers = [];
@@ -20,6 +21,7 @@ const getters = {
   voice: state => (channel) => state.values[channel - 1],
   values: state => state.values,
   channel: state => state.channel,
+  keyboardOctave: state => state.keyboardOctave,
 };
 
 // actions
@@ -76,6 +78,16 @@ const actions = {
   savePatchToDevice({ commit, state }, { id }) {
     const currentOutput = WebMidi.outputs.find((output) => output.id === store.getters['status/id']);
     currentOutput.sendChannelMode(121, id - 1, state.channel);
+  },
+  incrementOctave({ commit, state }) {
+    if(state.keyboardOctave < 6) {
+      commit('setKeyboardOctave', { octave: state.keyboardOctave + 1 });
+    }
+  },
+  decrementOctave({ commit, state }) {
+    if(state.keyboardOctave > 0) {
+      commit('setKeyboardOctave', { octave: state.keyboardOctave - 1 });
+    }
   }
 };
 
@@ -86,6 +98,9 @@ const mutations = {
   },
   setChannel(state, { channel }) {
     Vue.set(state, 'channel', channel);
+  },
+  setKeyboardOctave(state, { octave }) {
+    Vue.set(state, 'keyboardOctave', octave);
   }
 };
 

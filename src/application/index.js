@@ -26,7 +26,7 @@ class Application {
         //   sendValues = true;
         //   console.log('Should send current editor values to Synth memory');
         // }
-        store.dispatch('status/registerDeviceId', { id: e.id/* , sendValues*/ });
+        store.dispatch('status/registerDeviceId', { id: e.id/* , sendValues */ });
       }
     });
 

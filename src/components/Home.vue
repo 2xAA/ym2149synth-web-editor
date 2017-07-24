@@ -6,6 +6,11 @@
     <save-patch></save-patch>
     <save-to-file></save-to-file>
     <hr>
+    <h3>Playback options*</h3>
+    <small>(*these options are not saved in the patch, they are for testing sound playback in the editor only)</small>
+    <channel-selector></channel-selector>
+    <octave-selector></octave-selector>
+    <hr>
     <editor-panel></editor-panel>
   </div>
 </template>
@@ -17,6 +22,8 @@
   import LoadPatch from './LoadPatch';
   import SavePatch from './SavePatch';
   import SaveToFile from './SaveToFile';
+  import ChannelSelector from './ChannelSelector';
+  import OctaveSelector from './OctaveSelector';
   import EditorPanel from './EditorPanel';
 
   export default {
@@ -38,27 +45,13 @@
       LoadPatch,
       SavePatch,
       SaveToFile,
+      ChannelSelector,
+      OctaveSelector,
       EditorPanel,
     },
   };
 </script>
 
 <style scoped lang='scss'>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

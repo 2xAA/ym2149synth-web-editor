@@ -1,17 +1,7 @@
 <template>
   <div>
-    <channel-selector></channel-selector>
-    <h3>Synth Type</h3>
-    <select :disabled='!connected' v-model='voice'>
-      <option value='0'>Square-voice</option>
-      <option value='1'>Square-voice + Env-voice Saw (Square pitch modulations are soloed for "acid" effects.)</option>
-      <option value='2'>Square-voice + Env-voice Triangle (Square pitch modulations are soloed for "acid" effects.)</option>
-      <option value='3'>Env-voice Triangle</option>
-      <option value='4'>Env-voice Saw</option>
-      <option value='5'>Square-voice + Softwave-voice (PWM)</option>
-      <option value='6'>Square-voice + Softwave-voice (Square pitch modulations are soloed for "acid" effects.)</option>
-      <option value='7'>Noise</option>
-    </select>
+    <h2>Patch values:</h2>
+    <synth-type-selector></synth-type-selector>
     <range-control
       v-for='range in ranges'
       :title='range.title'
@@ -24,8 +14,8 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex';
-  import ChannelSelector from './ChannelSelector';
   import RangeControl from './RangeControl';
+  import SynthTypeSelector from './SynthTypeSelector';
 
   export default {
     name: 'editor-panel',
@@ -73,8 +63,8 @@
       },
     },
     components: {
-      ChannelSelector,
       RangeControl,
+      SynthTypeSelector,
     },
   };
 </script>
