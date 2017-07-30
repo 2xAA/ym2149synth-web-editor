@@ -56,7 +56,7 @@ const actions = {
     function ccHandle(e) {
       capture.push(e.data[2]);
 
-      // The YM2149 Synth patches are only 11 bytes, the rest is padding to meet MIDI spec
+      // The YM2149 Synth patches are 11 bytes
       if(capture.length === 11) {
         currentInput.removeListener('controlchange', state.channel, ccHandle);
 

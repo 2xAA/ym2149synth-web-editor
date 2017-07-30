@@ -6,6 +6,7 @@
       <load-patch></load-patch>
       <save-patch></save-patch>
     </div>
+    <load-from-file></load-from-file>
     <save-to-file></save-to-file>
     <hr>
     <h2>Playback options*</h2>
@@ -25,6 +26,7 @@
 
   import LoadPatch from './LoadPatch';
   import SavePatch from './SavePatch';
+  import LoadFromFile from './LoadFromFile';
   import SaveToFile from './SaveToFile';
   import ChannelSelector from './ChannelSelector';
   import OctaveSelector from './OctaveSelector';
@@ -48,6 +50,7 @@
     components: {
       LoadPatch,
       SavePatch,
+      LoadFromFile,
       SaveToFile,
       ChannelSelector,
       OctaveSelector,
