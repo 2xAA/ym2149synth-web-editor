@@ -20,6 +20,8 @@ class Application {
     WebMidi.addListener('connected', (e) => {
       if(!('output' in e)) return;
 
+      store.commit('status/setInputs', { inputs: WebMidi.inputs.map(input => input) });
+
       if(isSynth(e)) {
         // let sendValues = false;
         // if(this.newDeviceDialog()) {
@@ -31,10 +33,14 @@ class Application {
     });
 
     WebMidi.addListener('disconnected', (e) => {
-      if(isSynth(e)) {
+      store.commit('status/setInputs', { inputs: WebMidi.inputs.map(input => input) });
+
+      if(store.getters['status/id'] === e.id) {
         store.dispatch('status/resetStatus');
       }
     });
+
+    store.commit('status/setInputs', { inputs: WebMidi.inputs.map(input => input) });
 
     WebMidi.outputs.forEach((output) => {
       if(isSynth(output)) {

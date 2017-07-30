@@ -3,6 +3,7 @@
     <h1>YM2149Synth Patch Editor</h1>
     <h2>Connected: {{ connected }} <span v-if='name'>({{ name }})</span></h2>
     <div class='pure-g'>
+      <midi-device-list></midi-device-list>
       <load-patch></load-patch>
       <save-patch></save-patch>
     </div>
@@ -24,6 +25,7 @@
   import { mapGetters } from 'vuex';
   import WebMidi from 'webmidi';
 
+  import MidiDeviceList from './MidiDeviceList';
   import LoadPatch from './LoadPatch';
   import SavePatch from './SavePatch';
   import LoadFromFile from './LoadFromFile';
@@ -48,6 +50,7 @@
       },
     },
     components: {
+      MidiDeviceList,
       LoadPatch,
       SavePatch,
       LoadFromFile,
