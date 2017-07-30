@@ -41,6 +41,7 @@
           return this.$store.state.values.values[this.channel - 1][2];
         },
         set(value) {
+          console.log(value);
           this.writeValue({
             id: 3,
             value,
