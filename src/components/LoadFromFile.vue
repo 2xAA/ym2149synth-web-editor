@@ -6,7 +6,7 @@
     :class="{ 'pure-button-disabled': !connected }"
   >
     <input type='file' accept='.json' name='fileInput' ref='fileInput' class='hidden' />
-    <i class="fa fa-file-text" aria-hidden="true"></i> Load voice data from file
+    <i class="fa fa-folder-open" aria-hidden="true"></i> Load voice data from file
   </button>
 </template>
 
@@ -39,19 +39,17 @@
       loadFile(e) {
         const files = e.target.files;
 
-        for (let i = 0; i < files.length; i += 1) {
+        for(let i = 0; i < files.length; i += 1) {
           const file = files.item(i);
-          // Only process image files.
           if(!file.type.match('json.*')) {
             return;
           }
 
           const reader = new FileReader();
 
-          // Closure to capture the file information.
-          reader.onloadend =  (e) => { //eslint-disable-line
-            if(e.target.readyState === FileReader.DONE) {
-              const capture = JSON.parse(e.target.result);
+          reader.onloadend = (ev) => {
+            if(ev.target.readyState === FileReader.DONE) {
+              const capture = JSON.parse(ev.target.result);
               capture.forEach((data, idx) => this.writeValue({
                 id: idx + 1,
                 value: data,
@@ -66,6 +64,9 @@
     },
     mounted() {
       this.$refs.fileInput.addEventListener('change', this.loadFile.bind(this));
+    },
+    destroyed() {
+      this.$refs.fileInput.removeEventListener('change', this.loadFile.bind(this));
     },
   };
 </script>

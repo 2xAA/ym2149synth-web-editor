@@ -7,7 +7,7 @@
     class='pure-button'
     :class="{ 'pure-button-disabled': !connected }"
   >
-    <i class="fa fa-file-text" aria-hidden="true"></i> Save voice data to file
+    <i class="fa fa-floppy-o" aria-hidden="true"></i> Save voice data to file
   </a>
 </template>
 
