@@ -5,8 +5,8 @@ import Application from '@/application';
 import VueCircleSlider from 'vue-circle-slider';
 
 import 'purecss';
-import '../node_modules/purecss/build/grids-responsive.css';
-import '../node_modules/font-awesome/scss/font-awesome.scss';
+import 'font-awesome/scss/font-awesome.scss';
+import 'purecss/build/grids-responsive.css';
 
 import App from './App';
 import router from './router';
