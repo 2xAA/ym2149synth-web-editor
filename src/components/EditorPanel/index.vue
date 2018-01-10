@@ -4,7 +4,8 @@
     <div class='pure-g'>
       <synth-type-selector></synth-type-selector>
       <range-control
-        v-for='range in ranges'
+        v-for='(range, idx) in ranges'
+        :key="idx"
         :title='range.title'
         :label='range.label'
         :value='range.value'

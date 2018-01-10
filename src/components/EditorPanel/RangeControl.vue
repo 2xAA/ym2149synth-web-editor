@@ -2,14 +2,6 @@
   <div class='pure-u-1-1 pure-u-sm-1-2 pure-u-md-1-3 control-container'>
     <div class='shadow'>
         <h3>{{ title }}</h3>
-  <!--     <input
-        :disabled='!connected'
-        type='range'
-        min='0'
-        max='127'
-        step='1'
-        v-model.number='inputValue'
-      > -->
       <circle-slider
         v-model.number='inputValue'
         :min='0'
