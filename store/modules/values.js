@@ -3,7 +3,7 @@ import Vue from 'vue';
 import WebMidi from 'webmidi';
 import isSynth from '@/application/is-synth';
 
-const state = {
+const initialState = {
   values: [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64],
@@ -18,7 +18,7 @@ const timers = [];
 // getters
 const getters = {
   value: state => (channel, id) => state.values[channel - 1][id - 1],
-  voice: state => (channel) => state.values[channel - 1],
+  voice: state => channel => state.values[channel - 1],
   values: state => state.values,
   channel: state => state.channel,
   keyboardOctave: state => state.keyboardOctave,
@@ -28,7 +28,7 @@ const getters = {
 const actions = {
   writeValue({ commit, state }, { id, value }) {
     const channel = state.channel;
-    const currentOutput = WebMidi.outputs.find((output) => output.id === store.getters['status/id']);
+    const currentOutput = WebMidi.outputs.find(output => output.id === store.getters['status/id']);
 
     if(currentOutput) {
       currentOutput.sendControlChange(id, value, channel);
@@ -49,7 +49,7 @@ const actions = {
     commit('setValue', { channel: channel - 1, id: id - 1, value });
   },
   loadPatchFromDevice({ commit, state }, { channel, id }) {
-    const currentOutput = WebMidi.outputs.find((output) => output.id === store.getters['status/id']);
+    const currentOutput = WebMidi.outputs.find(output => output.id === store.getters['status/id']);
     const currentInput = WebMidi.inputs.find(input => isSynth(input));
     const capture = [];
 
@@ -60,7 +60,11 @@ const actions = {
       if(capture.length === 11) {
         currentInput.removeListener('controlchange', state.channel, ccHandle);
 
-        capture.forEach((data, idx) => commit('setValue', { channel: channel - 1, id: idx, value: data }))
+        capture.forEach((data, idx) => commit('setValue', {
+          channel: channel - 1,
+          id: idx,
+          value: data,
+        }));
       }
     }
 
@@ -76,7 +80,7 @@ const actions = {
     }, 80);
   },
   savePatchToDevice({ commit, state }, { id }) {
-    const currentOutput = WebMidi.outputs.find((output) => output.id === store.getters['status/id']);
+    const currentOutput = WebMidi.outputs.find(output => output.id === store.getters['status/id']);
     currentOutput.sendChannelMode(121, id - 1, state.channel);
   },
   incrementOctave({ commit, state }) {
@@ -88,7 +92,7 @@ const actions = {
     if(state.keyboardOctave > 0) {
       commit('setKeyboardOctave', { octave: state.keyboardOctave - 1 });
     }
-  }
+  },
 };
 
 // mutations
@@ -101,13 +105,13 @@ const mutations = {
   },
   setKeyboardOctave(state, { octave }) {
     Vue.set(state, 'keyboardOctave', octave);
-  }
+  },
 };
 
 export default {
   namespaced: true,
-  state,
+  state: initialState,
   getters,
   actions,
-  mutations
+  mutations,
 };

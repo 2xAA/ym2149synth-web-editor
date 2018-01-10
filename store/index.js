@@ -15,7 +15,7 @@ All commits are syncronously watched. Performance lag is due to this.`);
 export default new Vuex.Store({
   modules: {
     status,
-    values
+    values,
   },
-  strict: debug
+  strict: debug,
 });
