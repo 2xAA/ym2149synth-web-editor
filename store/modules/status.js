@@ -1,9 +1,8 @@
-import store from '@/../store';
 import Vue from 'vue';
 
-const state = {
+const initialState = {
   synthConnected: false,
-  synthId: ''
+  synthId: '',
 };
 
 // getters
@@ -18,10 +17,10 @@ const actions = {
     commit('setConnected', { connected: true });
     commit('setId', { id });
   },
-  resetStatus({ commit, state }) {
+  resetStatus({ commit }) {
     commit('setConnected', { connected: false });
     commit('setId', { id: '' });
-  }
+  },
 };
 
 // mutations
@@ -31,13 +30,13 @@ const mutations = {
   },
   setId(state, { id }) {
     Vue.set(state, 'synthId', id);
-  }
+  },
 };
 
 export default {
   namespaced: true,
-  state,
+  state: initialState,
   getters,
   actions,
-  mutations
+  mutations,
 };
