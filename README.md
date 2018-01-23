@@ -7,7 +7,7 @@
 
 **Do not try to use your synth with any other MIDI program/device while loading or saving patches as this can cause corrupt data.**
 
-**This software is licensed under the GNU General Public License v3.0 and such as no warranty - use this software at your own risk.**
+**This software is licensed under the GNU General Public License v3.0 and such, has no warranty - use this software at your own risk.**
 
 ## How to use
 
