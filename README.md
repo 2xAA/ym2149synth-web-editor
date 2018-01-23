@@ -11,7 +11,7 @@
 
 ## How to use
 
-1. Go to [https://2xaa.github.io/ym2149-synth-web-editor/](https://2xaa.github.io/ym2149-synth-web-editor/)
+1. Go to [https://2xaa.github.io/ym2149-synth-web-editor/](https://2xaa.github.io/ym2149synth-web-editor/)
 2. Accept the MIDI permissions Chrome asks for
 3. Plug in your synth to a USB port on your computer
 4. Edit!
