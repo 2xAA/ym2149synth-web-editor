@@ -5,7 +5,7 @@ module.exports = {
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/ym2149synth-web-editor/index.html'),
-    assetsRoot: path.resolve(__dirname, '../dist/ym2149synth-web-editor'),
+    assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/ym2149synth-web-editor/',
     productionSourceMap: true,
