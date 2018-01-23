@@ -1,5 +1,5 @@
 <template>
-  <div id='app'>
+  <div id="app">
     <router-view></router-view>
   </div>
 </template>
@@ -10,6 +10,6 @@
   };
 </script>
 
-<style lang='scss'>
-  @import './style.scss';
+<style lang="scss">
+  @import '~@/style.scss';
 </style>

@@ -1,10 +1,10 @@
 <template>
   <a
-    href='#'
-    download='voice.json'
-    @click='exportJson'
-    ref='downloadLink'
-    class='pure-button'
+    href="#"
+    download="voice.json"
+    @click="exportJson"
+    ref="downloadLink"
+    class="pure-button"
     :class="{ 'pure-button-disabled': !connected }"
   >
     <i class="fa fa-floppy-o" aria-hidden="true"></i> Save voice data to file
@@ -32,7 +32,3 @@
     },
   };
 </script>
-
-<style scoped lang='scss'>
-
-</style>

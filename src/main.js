@@ -8,9 +8,9 @@ import 'purecss';
 import 'font-awesome/scss/font-awesome.scss';
 import 'purecss/build/grids-responsive.css';
 
-import App from './App';
-import router from './router';
-import store from '../store';
+import App from '@/App';
+import router from '@/router';
+import store from '@/../store';
 
 Vue.use(VueCircleSlider);
 

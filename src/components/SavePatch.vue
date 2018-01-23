@@ -1,6 +1,6 @@
 <template>
-  <div class='control-container pure-u-1-1 pure-u-sm-1-2'>
-    <div class='shadow pure-form'>
+  <div class="control-container pure-u-1-1 pure-u-sm-1-2">
+    <div class="shadow pure-form">
       <label>
         <h3>Save Patch to Synth EEPROM</h3>
       </label>
@@ -8,9 +8,9 @@
         <option v-for='i in 11' :value='i'>Patch {{ i }}</option>
       </select>
       <button
-        :disabled='!connected'
-        @click='savePatch'
-        class='pure-button'
+        :disabled="!connected"
+        @click="savePatch"
+        class="pure-button"
       >
         <i class="fa fa-download" aria-hidden="true"></i> Save patch
       </button>
@@ -48,6 +48,3 @@
     },
   };
 </script>
-
-<style scoped lang='scss'>
-</style>

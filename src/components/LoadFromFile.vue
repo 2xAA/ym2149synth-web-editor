@@ -1,11 +1,11 @@
 <template>
   <button
-    href='#'
-    @click='clickLoadButton'
-    class='pure-button'
+    href="#"
+    @click="clickLoadButton"
+    class="pure-button"
     :class="{ 'pure-button-disabled': !connected }"
   >
-    <input type='file' accept='.json' name='fileInput' ref='fileInput' class='hidden' />
+    <input type="file" accept=".json" name="fileInput" ref="fileInput" class="hidden" />
     <i class="fa fa-folder-open" aria-hidden="true"></i> Load voice data from file
   </button>
 </template>
@@ -70,7 +70,3 @@
     },
   };
 </script>
-
-<style scoped lang='scss'>
-
-</style>

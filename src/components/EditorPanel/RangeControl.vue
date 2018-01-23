@@ -1,20 +1,20 @@
 <template>
-  <div class='pure-u-1-1 pure-u-sm-1-2 pure-u-md-1-3 control-container'>
-    <div class='shadow'>
+  <div class="pure-u-1-1 pure-u-sm-1-2 pure-u-md-1-3 control-container">
+    <div class="shadow">
         <h3>{{ title }}</h3>
       <circle-slider
-        v-model.number='inputValue'
-        :min='0'
-        :max='127'
-        :step-size='1'
+        v-model.number="inputValue"
+        :min="0"
+        :max="127"
+        :step-size="1"
       ></circle-slider>
       <input
-        :disabled='!connected'
-        type='number'
-        min='0'
-        max='127'
-        step='1'
-        v-model.number='inputValue'
+        :disabled="!connected"
+        type="number"
+        min="0"
+        max="127"
+        step="1"
+        v-model.number="inputValue"
       >
       <p v-if='label'>{{ label }}</p>
     </div>
@@ -63,6 +63,3 @@
     },
   };
 </script>
-
-<style scoped lang='scss'>
-</style>
