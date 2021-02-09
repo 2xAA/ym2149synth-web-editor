@@ -3,7 +3,7 @@
     <div class="shadow pure-form">
       <h3>Synth Type</h3>
       <select :disabled="!connected" v-model.number="voice">
-        <option v-for="(option, idx) in options" :value="idx">{{ option }}</option>
+        <option v-for="(option, idx) in options" :value="idx" :key="idx">{{ option }}</option>
       </select>
     </div>
   </div>
@@ -41,7 +41,6 @@
           return this.$store.state.values.values[this.channel - 1][2];
         },
         set(value) {
-          console.log(value);
           this.writeValue({
             id: 3,
             value,

@@ -3,12 +3,14 @@ import Vue from 'vue';
 const initialState = {
   synthConnected: false,
   synthId: '',
+  inputs: [],
 };
 
 // getters
 const getters = {
   connected: state => state.synthConnected,
   id: state => state.synthId,
+  inputs: state => state.inputs,
 };
 
 // actions
@@ -30,6 +32,9 @@ const mutations = {
   },
   setId(state, { id }) {
     Vue.set(state, 'synthId', id);
+  },
+  setInputs(state, { inputs }) {
+    Vue.set(state, 'inputs', inputs);
   },
 };
 
