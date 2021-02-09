@@ -6,7 +6,7 @@
         If it is not detected, you can use these controls to explicitly select a MIDI device
       </p>
       <select :disabled='connected' v-model='deviceId'>
-        <option v-for='option in inputOptions' :selected='option.selected'>{{ option.input.name }}</option>
+        <option v-for='option in inputOptions' :selected='option.selected' :key='option.id'>{{ option.input.name }}</option>
       </select>
       <button
         class='pure-button'

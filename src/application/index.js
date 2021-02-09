@@ -18,24 +18,22 @@ class Application {
 
   setup() { //eslint-disable-line
     WebMidi.addListener('connected', (e) => {
-      if(!('output' in e)) return;
-
       store.commit('status/setInputs', { inputs: WebMidi.inputs.map(input => input) });
 
-      if(isSynth(e)) {
+      if(e.port.type === 'output' && isSynth(e.port)) {
         // let sendValues = false;
         // if(this.newDeviceDialog()) {
         //   sendValues = true;
         //   console.log('Should send current editor values to Synth memory');
         // }
-        store.dispatch('status/registerDeviceId', { id: e.id/* , sendValues */ });
+        store.dispatch('status/registerDeviceId', { id: e.port.id/* , sendValues */ });
       }
     });
 
     WebMidi.addListener('disconnected', (e) => {
       store.commit('status/setInputs', { inputs: WebMidi.inputs.map(input => input) });
 
-      if(store.getters['status/id'] === e.id) {
+      if(store.getters['status/id'] === e.port.id) {
         store.dispatch('status/resetStatus');
       }
     });

@@ -4,12 +4,12 @@
     <div class="pure-g">
       <synth-type-selector></synth-type-selector>
       <range-control
-        v-for="(range, idx) in ranges"
-        :key="idx"
+        v-for="range in ranges"
         :title="range.title"
         :label="range.label"
         :value="range.value"
         :cc="range.cc"
+        :key="range.title"
       ></range-control>
     </div>
   </div>
@@ -71,3 +71,10 @@
     },
   };
 </script>
+<<<<<<< Updated upstream
+=======
+
+<style scoped lang='scss'>
+
+</style>
+>>>>>>> Stashed changes
