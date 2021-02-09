@@ -1,14 +1,15 @@
 <template>
   <div>
     <h2>Patch values:</h2>
-    <div class='pure-g'>
+    <div class="pure-g">
       <synth-type-selector></synth-type-selector>
       <range-control
-        v-for='range in ranges'
-        :title='range.title'
-        :label='range.label'
-        :value='range.value'
-        :cc='range.cc'
+        v-for="(range, idx) in ranges"
+        :key="idx"
+        :title="range.title"
+        :label="range.label"
+        :value="range.value"
+        :cc="range.cc"
       ></range-control>
     </div>
   </div>
@@ -70,7 +71,3 @@
     },
   };
 </script>
-
-<style scoped lang='scss'>
-
-</style>

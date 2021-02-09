@@ -1,14 +1,14 @@
 <template>
-  <div class='control-container pure-u-1-1 pure-u-sm-1-2'>
-    <div class='shadow pure-form'>
+  <div class="control-container pure-u-1-1 pure-u-sm-1-2">
+    <div class="shadow pure-form">
       <label>
         <h3>Load Patch from Synth EEPROM</h3>
       </label>
-      <select :disabled='!connected' v-model.number='inputValue'>
-        <option v-for='i in 11' :value='i'>Patch {{ i }}</option>
+      <select :disabled="!connected" v-model.number="inputValue">
+        <option v-for="i in 11" :value="i">Patch {{ i }}</option>
       </select>
       <button
-        :disabled='!connected'
+        :disabled="!connected"
         @click='loadPatch'
         class='pure-button'
       >
@@ -50,7 +50,7 @@
   };
 </script>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
   .load-patch-container {
     display: inline-block;
     text-align: center;

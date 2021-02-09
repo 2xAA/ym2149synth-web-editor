@@ -31,21 +31,11 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
+        include: [resolve('src'), resolve('store')],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
       },
-      // {
-      //   test: /\.scss$/,
-      //   use: [{
-      //     loader: "style-loader" // creates style nodes from JS strings
-      //   }, {
-      //     loader: "css-loader" // translates CSS into CommonJS
-      //   }, {
-      //     loader: "sass-loader" // compiles Sass to CSS
-      //   }]
-      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -54,7 +44,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('store')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

@@ -5,6 +5,7 @@ import home from '@/components/Home';
 Vue.use(Router);
 
 export default new Router({
+  base: '/ym2149synth-web-editor',
   mode: 'history',
   routes: [
     {
