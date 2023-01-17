@@ -12,35 +12,31 @@
 </template>
 
 <script>
-  import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters, mapMutations } from "vuex";
 
-  export default {
-    name: 'channel-selector',
-    data() {
-      return {
-        inputValue: 1,
-      };
+export default {
+  name: "channel-selector",
+  data() {
+    return {
+      inputValue: 1,
+    };
+  },
+  computed: {
+    ...mapGetters("status", ["connected"]),
+  },
+  methods: {
+    ...mapMutations("values", ["setChannel"]),
+  },
+  watch: {
+    inputValue() {
+      this.setChannel({ channel: this.inputValue });
     },
-    computed: {
-      ...mapGetters('status', [
-        'connected',
-      ]),
-    },
-    methods: {
-      ...mapMutations('values', [
-        'setChannel',
-      ]),
-    },
-    watch: {
-      inputValue() {
-        this.setChannel({ channel: this.inputValue });
-      },
-    },
-  };
+  },
+};
 </script>
 
-<style scoped lang='scss'>
-  label {
-    display: block;
-  }
+<style scoped>
+label {
+  display: block;
+}
 </style>

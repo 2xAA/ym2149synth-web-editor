@@ -5,11 +5,11 @@
 </template>
 
 <script>
-  export default {
-    name: 'app',
-  };
+export default {
+  name: "app",
+};
 </script>
 
-<style lang="scss">
-  @import '~@/style.scss';
+<style>
+@import "~@/style.css";
 </style>

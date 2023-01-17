@@ -4,8 +4,8 @@
   text-align: center;
   box-sizing: border-box;
   padding: 2em;
-
-  .shadow {
+}
+  .control-container .shadow {
     background-color: #fff;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .09%);
     height: 100%;
@@ -15,7 +15,7 @@
 
     border-radius: 20px;
   }
-}
+
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
